@@ -1,5 +1,6 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect, useContext } from "react";
 import axios from "axios";
+import { CoronaContext } from "../CoronaContext";
 
 import Intro from "../Intro/Intro";
 import Global from "../Charts/Global/Global";
@@ -10,10 +11,7 @@ import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 const MainInfo = () => {
-  const [globalNews, setGlobalNews] = useState([]);
-  const [countryNews, setCountryNews] = useState([]);
-  const [countryName, setCountryName] = useState("");
-  const [showCountryNameFromButton, setCountryNameFromButton] = useState("");
+  const [state, setState] = useContext(CoronaContext);
 
   useEffect(() => {
     getGlobalTotalNews();
@@ -21,7 +19,7 @@ const MainInfo = () => {
 
   useEffect(() => {
     getCountryTotalNews();
-  }, [showCountryNameFromButton]);
+  }, [state.showCountryNameFromButton]);
 
   const getGlobalTotalNews = async () => {
     const options = {
@@ -35,7 +33,7 @@ const MainInfo = () => {
 
     try {
       const { data } = await axios.request(options);
-      setGlobalNews(data);
+      setState((prevState) => ({ ...prevState, globalNews: data }));
     } catch (error) {
       toast.error(error);
     }
@@ -45,7 +43,7 @@ const MainInfo = () => {
     const options = {
       method: "GET",
       url: "https://covid-19-data.p.rapidapi.com/country",
-      params: { name: showCountryNameFromButton },
+      params: { name: state.showCountryNameFromButton },
       headers: {
         "x-rapidapi-key": process.env.REACT_APP_RAPID_API_KEY,
         "x-rapidapi-host": "covid-19-data.p.rapidapi.com",
@@ -54,27 +52,37 @@ const MainInfo = () => {
 
     try {
       const { data } = await axios.request(options);
-      setCountryNews(data);
+      setState((prevState) => ({ ...prevState, countryNews: data }));
     } catch (error) {
       toast.error(error);
     }
   };
 
   return (
-    <div>
+    <React.Fragment>
       <Intro />
       <div className="container">
-        <Global info={globalNews} />
+        <Global info={state.globalNews} />
         <Country
-          countryName={countryName}
-          countryNews={countryNews}
-          getUserInput={(e) => setCountryName(e.target.value)}
-          showCountryName={() => setCountryNameFromButton(countryName)}
-          showCountryNameFromButton={showCountryNameFromButton}
+          countryName={state.countryName}
+          countryNews={state.countryNews}
+          getUserInput={(e) =>
+            setState((prevState) => ({
+              ...prevState,
+              countryName: e.target.value,
+            }))
+          }
+          showCountryName={() =>
+            setState((prevState) => ({
+              ...prevState,
+              showCountryNameFromButton: state.countryName,
+            }))
+          }
+          showCountryNameFromButton={state.showCountryNameFromButton}
         />
       </div>
       <Footer />
-    </div>
+    </React.Fragment>
   );
 };
 

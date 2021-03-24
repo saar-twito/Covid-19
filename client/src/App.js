@@ -1,5 +1,6 @@
 import React from 'react'
 import MainInfo from './components//Main/MainInfo'
+import { CoronaProvider } from './components/CoronaContext'
 
 // * Style
 import { ToastContainer } from 'react-toastify';
@@ -9,10 +10,12 @@ import './App.css';
 
 const App = () => {
   return (
-    <div className="App">
-      <ToastContainer />
-      <MainInfo />
-    </div>
+    <CoronaProvider>
+      <div className="App">
+        <ToastContainer />
+        <MainInfo />
+      </div>
+    </CoronaProvider>
   );
 }
 

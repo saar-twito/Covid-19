@@ -8,7 +8,7 @@ const Global = ({ info }) => {
         className="col-sm-12 col-md-6 col-lg-6 mt-5"
         style={{ textAlign: "justify" }}
       >
-        <h1>Covid-19 around the world</h1>
+        <h1 style={{ color: "grey" }}>Covid-19 around the world</h1>
         <p>
           The Covid-19 pandemic has reached almost every country in the world.
           Its spread has left national economies and businesses counting the

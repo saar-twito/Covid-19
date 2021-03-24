@@ -21,7 +21,7 @@ const Country = ({
         className="col-sm-12 col-md-6 col-lg-6 mt-5"
         style={{ textAlign: "justify" }}
       >
-        <h1>Covid-19 in a specific country</h1>
+        <h1 style={{ color: "grey" }}>Covid-19 in a specific country</h1>
         <p>
           Some countries have managed to deal in different ways in relation to
           each other, some better and some less well.

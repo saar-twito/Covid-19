@@ -4,15 +4,16 @@ import { Doughnut } from "react-chartjs-2";
 const GlobeDoughnut = ({ info }) => {
   if (info.length === 0) return <h2>No data is available</h2>;
 
-  const keys = Object.keys(info[0]).slice(0, 4);
-  const values = Object.values(info[0]).slice(0, 4);
+  const getValues = (info) => Object.values(info[0]).slice(0, 4);
+  const getKeys = (info) => Object.keys(info[0]).slice(0, 4);
+
   return (
     <Doughnut
       data={{
-        labels: keys,
+        labels: getKeys(info),
         datasets: [
           {
-            data: values,
+            data: getValues(info),
             backgroundColor: [
               "rgba(255, 8, 0, 0.8)",
               "rgba(0, 159, 107, 0.8)",
