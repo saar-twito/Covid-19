@@ -47,9 +47,8 @@
   .Header {
     color: snow;
     font-size: 3.5rem;
-    margin-top: 5rem;
     letter-spacing: 3px;
-    top: 19rem;
+    top: 17rem;
   }
 }
 
@@ -58,7 +57,7 @@
   .Header {
     color: snow;
     font-size: 3.5rem;
-    margin-top: 5rem;
+    margin-top: 3rem;
     letter-spacing: 3px;
     word-spacing: 4px;
   }
