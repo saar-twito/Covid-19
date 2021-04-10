@@ -3,7 +3,7 @@ import CountryDoughnut from "./CountryDoughnut";
 import Layout from "../../Layout/Layout";
 
 // * Style
-import classes from "./style.module.css";
+import "../style.css";
 
 const Country = ({
   countryName,
@@ -22,8 +22,8 @@ const Country = ({
   return (
     <article className="row mt-5">
       <Layout>
-        <h1 className={classes.Header}>Covid-19 in a specific country</h1>
-        <p className={classes.Description}>
+        <h1 className="header">Covid-19 in a specific country</h1>
+        <p className="description">
           Some countries have managed to deal in different ways in relation to
           each other, some better and some less well.
           <br />
