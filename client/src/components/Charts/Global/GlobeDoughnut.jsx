@@ -2,7 +2,7 @@ import React from "react";
 import { Doughnut } from "react-chartjs-2";
 
 const GlobeDoughnut = ({ info }) => {
-  if (info.length === 0) return <h2>No data is available</h2>;
+  if (info.length === 0) return <h2>Please refresh the web browser</h2>;
 
   const getValues = (info) => Object.values(info[0]).slice(0, 4);
   const getKeys = (info) => Object.keys(info[0]).slice(0, 4);
@@ -23,8 +23,8 @@ const GlobeDoughnut = ({ info }) => {
           },
         ],
       }}
-      height={300}
-      width={300}
+      height={200}
+      width={200}
       options={{
         maintainAspectRatio: false,
         legend: {

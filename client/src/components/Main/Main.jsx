@@ -1,8 +1,9 @@
 import React, { useEffect, useContext } from "react";
-import Header from "../Header/Header";
+import Hero from "../Hero/Hero";
 import Global from "../Charts/Global/Global";
 import Country from "../Charts/Country/Country";
 import Footer from "../Footer/Footer";
+import Line from "../line";
 
 import { getInfoAbout } from "../RapidApis/Get";
 import { CoronaContext } from "../UseContext/Corona";
@@ -11,18 +12,19 @@ const MainInfo = () => {
   const [state, setState] = useContext(CoronaContext);
 
   useEffect(() => {
-     getInfoAbout(setState, state, "totals", "globalNews");
+    getInfoAbout(setState, state, "totals", "globalNews");
   }, []);
 
   useEffect(() => {
-     getInfoAbout(setState, state, "country", "countryNews");
+    getInfoAbout(setState, state, "country", "countryNews");
   }, [state.showCountryNameFromButton]);
 
   return (
     <main>
-      <Header />
+      <Hero />
       <div className="container">
         <Global info={state.globalNews} />
+        <Line />
         <Country
           countryName={state.countryName}
           countryNews={state.countryNews}

@@ -3,7 +3,7 @@ import CountryDoughnut from "./CountryDoughnut";
 import Layout from "../../Layout/Layout";
 
 // * Style
-import "../style.css";
+import classes from "../style.module.css";
 
 const Country = ({
   countryName,
@@ -12,42 +12,35 @@ const Country = ({
   showCountryName,
   showCountryNameFromButton,
 }) => {
-  const SearchButtonStyle = {
-    marginLeft: "1rem",
-    marginLeft: "1rem",
-    color: "white",
-    fontWeight: "500",
-    fontSize: "1.1rem",
-  };
   return (
-    <article className="row mt-5">
+    <article className="row p-5 mt-5">
       <Layout>
-        <h1 className="header">Covid-19 in a specific country</h1>
-        <p className="description">
+        <h1 className={classes.header}>Covid-19 in a specific country</h1>
+        <p>
           Some countries have managed to deal in different ways in relation to
           each other, some better and some less well.
-          <br />
-          <strong>In the diagram to your right</strong>, you can see different
-          data about countries of your choice.
+          <strong> In the next diagram</strong>, you can see different data
+          about countries of your choice.
         </p>
       </Layout>
 
       <Layout>
-        <input
-          type="text"
-          value={countryName}
-          placeholder="Search by a country name"
-          style={{ width: "15rem", textAlign: "center" }}
-          onChange={getUserInput}
-        ></input>
-        <button
-          type="button"
-          className="btn btn-primary"
-          style={SearchButtonStyle}
-          onClick={showCountryName}
-        >
-          Search
-        </button>
+        <form className={classes.form}>
+          <input
+            className={classes.countryNameInput}
+            type="text"
+            value={countryName}
+            placeholder="Search by a country name"
+            onChange={getUserInput}
+          ></input>
+          <button
+            type="button"
+            className={`btn btn-primary ${classes.searchButtonByCountry}`}
+            onClick={showCountryName}
+          >
+            Search
+          </button>
+        </form>
         <CountryDoughnut
           countryNews={countryNews}
           countryName={showCountryNameFromButton}

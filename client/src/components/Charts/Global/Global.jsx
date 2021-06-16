@@ -3,21 +3,20 @@ import GlobeDoughnut from "./GlobeDoughnut";
 import Layout from "../../Layout/Layout";
 
 // * Style
-import "../style.css";
+import classes from "../style.module.css";
 
 const Global = ({ info }) => (
-  <article className="row mt-5">
+  <article className="row p-5 mt-3">
     <Layout>
-      <h1 className="header">Covid-19 around the world</h1>
-      <p className="description">
+      <h1 className={classes.header}>Covid-19 around the world</h1>
+      <p>
         The Covid-19 pandemic has reached almost every country in the world.
         spread has left national economies and businesses counting the as
         governments struggle with new lockdown measures to tackle ad of the
         virus.Despite the development of new vaccines, many are still wondering
         what recovery could look like.
-        <br />
-        <strong>In the diagram on the right</strong>, you can see the data on
-        the state of the corona in the world.
+        <strong> In the next diagram</strong>, you can see the data on the state
+        of the corona in the world.
       </p>
     </Layout>
     <Layout>

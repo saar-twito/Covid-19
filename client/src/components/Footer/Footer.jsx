@@ -2,8 +2,9 @@ import React from "react";
 
 // * Style
 import classes from "./style.module.css";
+
 const Footer = () => (
-  <footer className={classes.Container}>
+  <footer className={classes.container}>
     <h1>Want to learn more?</h1>
     <a
       target="_blank"

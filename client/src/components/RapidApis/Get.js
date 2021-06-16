@@ -1,9 +1,5 @@
 import axios from "axios";
 
-import { toast } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
-
-
 export const getInfoAbout = async (setState, state, endpoint, key) => {
     const options = {
         method: "GET",
@@ -14,11 +10,6 @@ export const getInfoAbout = async (setState, state, endpoint, key) => {
             "x-rapidapi-host": "covid-19-data.p.rapidapi.com",
         },
     };
-
-    try {
-        const { data } = await axios.request(options);
-        setState((prevState) => ({ ...prevState, [key]: data }));
-    } catch (error) {
-        toast.error(error);
-    }
+    const { data } = await axios.request(options);
+    setState((prevState) => ({ ...prevState, [key]: data }));
 }

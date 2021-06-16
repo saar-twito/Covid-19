@@ -1,5 +1,6 @@
 import React from "react";
 import { Doughnut } from "react-chartjs-2";
+import classes from '../style.module.css';
 
 const CountryDoughnut = ({ countryNews, countryName }) => {
   if (countryNews.length === 0) return null;
@@ -10,7 +11,7 @@ const CountryDoughnut = ({ countryNews, countryName }) => {
 
   return (
     <React.Fragment>
-      <h1>Total in {countryName}</h1>
+      <h1 className={classes.specificCountry}>Total in {countryName}</h1>
       <Doughnut
         data={{
           labels: keys,
@@ -26,8 +27,8 @@ const CountryDoughnut = ({ countryNews, countryName }) => {
             },
           ],
         }}
-        height={100}
-        width={100}
+        height={200}
+        width={200}
         options={{
           maintainAspectRatio: false,
           legend: {
